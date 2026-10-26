@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 ## [0.17.3] - 2026-10-26
 
