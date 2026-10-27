@@ -1,4 +1,4 @@
-﻿# Changelog
+# Changelog
 
 Todas as mudancas notaveis do APEX sao documentadas neste arquivo.
 
@@ -7,6 +7,35 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 
 ## [Nao lancado]
 
+## [0.17.7] - 2026-10-27
+
+### Adicionado
+- Sistema de atualizacao via manifest.json publico hospedado em GitHub Pages
+  (notvictornw.github.io/apex-releases/manifest.json), com fallback para o
+  CHANGELOG.md quando o manifest nao traz notas.
+- Repositorio espelho publico (notvictornw/apex-releases) para distribuicao
+  de binarios e manifest, mantendo o codigo-fonte (notvictornw/apex) privado.
+- Instalador Inno Setup com versao parametrizada via ISCC /DAppVersion
+  (elimina versao hardcoded no .iss).
+- CI/CD: build, empacotamento portable, instalador, SHA256, release versionada,
+  publicacao no repo espelho e atualizacao do manifest em um unico workflow.
+- Crash reporter com dialogo (CrashDialog), coleta de contexto (CPU, GPU, RAM,
+  versao do .NET, ultimas 60 linhas do log) e envio opcional para endpoint HTTP.
+- Handler de crash pre-startup (AppDomain.UnhandledException).
+
+### Alterado
+- Cada push na main gera uma nova versao automaticamente (bump de patch),
+  tag vX.Y.Z e release correspondente.
+- Release latest agora aponta sempre para a versao mais recente.
+
+### Corrigido
+- Comparacao de versoes (IsNewer) nao gera mais falso positivo
+  quando a versao remota tem revision zerada (0.17.0 vs 0.17.0.0).
+- Consulta a /releases (lista) em vez de /releases/latest, que retornava 404
+  em repositorios com releases ainda em rascunho.
+- gh release create no repo espelho usa PAT dedicado (MIRROR_PAT) para
+  contornar HTTP 403: Resource not accessible by integration.
+- Path da deploy key SSH normalizado com Join-Path + escape.
 ## [0.17.0] - 2026-10-26
 
 ### Adicionado
@@ -16,18 +45,17 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 - Download com verificacao SHA256 (integridade garantida) e instalacao automatica:
   o Apex se reinicia com a nova versao sem intervencao do usuario.
 - Modo silencioso: baixa e instala automaticamente sem perguntar.
-- Nova secao em Configuracoes > Geral > ATUALIZACOES, com botao "VERIFICAR AGORA".
-- Versionamento semantico: cada release tem tag `vX.Y.Z`.
+- Nova secao em Configuracoes > Geral > ATUALIZACOES, com botao VERIFICAR AGORA.
+- Versionamento semantico: cada release tem tag vX.Y.Z.
 
 ### Alterado
-- Release "latest" agora aponta sempre para a versao mais recente.
+- Release latest agora aponta sempre para a versao mais recente.
 
 ### Corrigido
-- Comparacao de versoes (`IsNewer`) nao gera mais falso positivo
-  quando a versao remota tem revision zerada (`0.17.0` vs `0.17.0.0`).
-- Consulta a `/releases` (lista) em vez de `/releases/latest`, que retornava 404
+- Comparacao de versoes (IsNewer) nao gera mais falso positivo
+  quando a versao remota tem revision zerada (0.17.0 vs 0.17.0.0).
+- Consulta a /releases (lista) em vez de /releases/latest, que retornava 404
   em repositorios com releases ainda em rascunho.
-
 ## [0.16.0] - 2026-10-20
 
 ### Adicionado
@@ -37,7 +65,7 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 - Interruptor para ativar/desativar entradas de inicializacao (mesmo modelo do
   Gerenciador de Tarefas: a entrada continua la e pode ser religada).
 - Botao REMOVER com confirmacao; o programa continua instalado e tudo pode ser
-  desfeito em "Restaurar removidos".
+  desfeito em Restaurar removidos.
 - Nova pagina APEX FERRAMENTAS > Instalar apps: essenciais pos-formatacao via winget
   (Steam, Google Chrome, Discord, Lightshot, 7-Zip, WinRAR e VLC).
 - APEX MAKER: suporte a portas COM e drivers seriais CH340/CP210x/FTDI/Prolific/Arduino.
@@ -46,8 +74,9 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 ## [0.12.0] - 2026-09-15
 
 ### Adicionado
-- Sistema de tags: cada tag `vX.Y.Z` gera uma release fixa no GitHub.
+- Sistema de tags: cada tag vX.Y.Z gera uma release fixa no GitHub.
 
+[0.17.7]: https://github.com/notvictornw/apex/compare/v0.17.0...v0.17.7
 [0.17.0]: https://github.com/notvictornw/apex/compare/v0.16.0...v0.17.0
 [0.16.0]: https://github.com/notvictornw/apex/compare/v0.12.0...v0.16.0
 [0.12.0]: https://github.com/notvictornw/apex/releases/tag/v0.12.0
