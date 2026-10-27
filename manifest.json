@@ -1,1 +1,22 @@
-{"schema":1,"channel":"stable","latest":{"version":"0.17.3","tag":"v0.17.3","released_at":"2026-10-26T20:18:47Z","min_supported":"0.15.0","installer":{"url":"https://github.com/notvictornw/apex-releases/releases/download/v0.17.3/Apex-Setup-0.17.3.exe","sha256":"","size":0},"portable":{"url":"https://github.com/notvictornw/apex-releases/releases/download/v0.17.3/Apex.zip","sha256":"","size":0},"notes_url":"https://notvictornw.github.io/apex-releases/CHANGELOG.md","notes":"Release inicial do canal publico."}}
+{
+  "schema": 1,
+  "channel": "stable",
+  "latest": {
+    "version": "0.17.5",
+    "tag": "v0.17.5",
+    "released_at": "2026-10-27T04:08:12Z",
+    "min_supported": "0.15.0",
+    "installer": {
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.17.5/Apex-Setup-0.17.5.exe",
+      "sha256": "0c58294b18fd38d5eedd142bd941c634cddabeb4ddccbd4bd68fbc341970ebe4",
+      "size": 13735587
+    },
+    "portable": {
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.17.5/Apex.zip",
+      "sha256": "492377ccda1d622b352005fbfb80e27dd9c35e0d6be0edec76a3b21005887d87",
+      "size": 83390985
+    },
+    "notes_url": "https://notvictornw.github.io/apex-releases/CHANGELOG.md",
+    "notes": "Release 0.17.5"
+  }
+}
