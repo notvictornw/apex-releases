@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apex — Download da última versão</title>
+<meta name="description" content="Baixe o Apex — ferramenta de otimização e manutenção para Windows. Instalador e versão portable direto do repositório oficial.">
+<meta name="theme-color" content="#070a09">
+<meta property="og:title" content="Apex — Download da última versão">
+<meta property="og:description" content="Baixe o Apex para Windows: instalador ou versão portable, direto do repositório oficial.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d0b'/%3E%3Cpath d='M32 10 L54 54 H43.5 L32 29 L20.5 54 H10 Z' fill='%23a3e635'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #070a09;
+    --surface: rgba(255, 255, 255, 0.03);
+    --card: rgba(255, 255, 255, 0.025);
+    --line: rgba(255, 255, 255, 0.08);
+    --line-strong: rgba(255, 255, 255, 0.16);
+    --text: #eef2ef;
+    --muted: #a8b3ac;
+    --faint: #8a958f;
+    --accent: #a3e635;
+    --accent-strong: #bef264;
+    --accent-ink: #101803;
+    --amber: #fbbf24;
+    --radius: 20px;
+    --font-sans: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { color-scheme: dark; scroll-behavior: smooth; }
+  [hidden] { display: none !important; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    font-size: 16px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: rgba(163, 230, 53, 0.28); color: #fff; }
+
+  ::-webkit-scrollbar { width: 10px; }
+  ::-webkit-scrollbar-track { background: #060807; }
+  ::-webkit-scrollbar-thumb { background: #1c2420; border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: #2a352f; }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* ---------- Atmosfera de fundo ---------- */
+  .backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(900px 520px at 82% -12%, rgba(163, 230, 53, 0.09), transparent 62%),
+      radial-gradient(760px 520px at 6% 110%, rgba(163, 230, 53, 0.05), transparent 60%),
+      linear-gradient(180deg, #0a0d0b 0%, #070a09 45%, #060807 100%);
+  }
+  .backdrop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 95% 75% at 50% 0%, #000 25%, transparent 78%);
+    mask-image: radial-gradient(ellipse 95% 75% at 50% 0%, #000 25%, transparent 78%);
+  }
+  .grain {
+    position: fixed;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0.045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+  }
+  .topline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent 5%, rgba(163, 230, 53, 0.55) 50%, transparent 95%);
+  }
+
+  .wrap {
+    max-width: 980px;
+    margin-inline: auto;
+    padding-inline: clamp(18px, 4vw, 28px);
+  }
+
+  main { position: relative; z-index: 1; }
+
+  /* ---------- Topbar ---------- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 20px 0;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 650;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
+  }
+  .brand svg { width: 24px; height: 24px; color: var(--accent); }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    border-radius: 999px;
+    padding: 6px 13px;
+    font-size: 0.78rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .chip svg { width: 13px; height: 13px; color: var(--accent); }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: clamp(38px, 8vh, 80px) 0 44px; }
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.7;
+  }
+  .title {
+    margin-top: 16px;
+    font-size: clamp(2.6rem, 7vw, 4rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+  .verline { margin-top: 10px; }
+  .ver {
+    font-family: var(--font-mono);
+    font-size: clamp(2.9rem, 9vw, 5rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--accent);
+    text-shadow: 0 0 46px rgba(163, 230, 53, 0.35);
+  }
+  .meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+  .pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    animation: pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(163, 230, 53, 0.45); }
+    70%  { box-shadow: 0 0 0 9px rgba(163, 230, 53, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(163, 230, 53, 0); }
+  }
+
+  /* ---------- Skeletons ---------- */
+  .skel {
+    display: inline-block;
+    border-radius: 8px;
+    vertical-align: middle;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+    background-size: 200% 100%;
+    animation: shimmer 1.4s linear infinite;
+  }
+  @keyframes shimmer {
+    from { background-position: 200% 0; }
+    to   { background-position: -200% 0; }
+  }
+  .skel-ver { width: 5.2ch; height: 0.82em; }
+  .skel-size { width: 92px; height: 14px; }
+
+  /* ---------- Aviso offline ---------- */
+  .notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    border: 1px solid rgba(251, 191, 36, 0.25);
+    background: rgba(251, 191, 36, 0.06);
+    border-radius: 14px;
+    padding: 14px 16px;
+    margin-bottom: 20px;
+    font-size: 0.92rem;
+    color: #d8ddd5;
+  }
+  .notice svg { width: 18px; height: 18px; color: var(--amber); flex-shrink: 0; margin-top: 2px; }
+  .notice a { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* ---------- Cards de download ---------- */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  @media (min-width: 760px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 26px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012));
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(163, 230, 53, 0.32);
+    box-shadow: 0 20px 44px -20px rgba(0, 0, 0, 0.65);
+  }
+  .card-featured {
+    border-color: rgba(163, 230, 53, 0.3);
+    background:
+      linear-gradient(180deg, rgba(163, 230, 53, 0.07), rgba(163, 230, 53, 0.012) 55%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  }
+  .badge {
+    position: absolute;
+    top: -12px;
+    right: 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent);
+    color: var(--accent-ink);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px -6px rgba(163, 230, 53, 0.5);
+  }
+  .badge svg { width: 12px; height: 12px; }
+
+  .card-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .card-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .card-icon svg { width: 20px; height: 20px; }
+  .card h2 {
+    font-size: 1.2rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+  }
+  .card-desc {
+    color: var(--muted);
+    font-size: 0.93rem;
+    flex-grow: 1;
+  }
+  .card-size {
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--muted);
+  }
+
+  /* ---------- Botões ---------- */
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px 22px;
+    border-radius: 13px;
+    font-weight: 650;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.18s ease, box-shadow 0.25s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+  .btn svg { width: 19px; height: 19px; flex-shrink: 0; }
+  .btn:active { transform: translateY(1px) scale(0.995); }
+  .btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
+    transform: translateX(-130%);
+    transition: transform 0.65s ease;
+    pointer-events: none;
+  }
+  .btn:hover::after { transform: translateX(130%); }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--accent-ink);
+    box-shadow: 0 12px 32px -12px rgba(163, 230, 53, 0.5);
+  }
+  .btn-primary:hover {
+    background: var(--accent-strong);
+    box-shadow: 0 16px 40px -12px rgba(163, 230, 53, 0.6);
+  }
+  .btn-secondary {
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+  }
+  .btn-secondary:hover {
+    border-color: rgba(163, 230, 53, 0.55);
+    background: rgba(163, 230, 53, 0.06);
+  }
+
+  /* ---------- SHA-256 ---------- */
+  .sha {
+    border-top: 1px dashed var(--line);
+    padding-top: 12px;
+  }
+  .sha summary {
+    list-style: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    user-select: none;
+  }
+  .sha summary::-webkit-details-marker { display: none; }
+  .sha summary:hover { color: var(--text); }
+  .sha summary svg { width: 14px; height: 14px; transition: transform 0.2s ease; }
+  .sha[open] summary svg { transform: rotate(180deg); }
+  .sha-body {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  .sha-body code {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--faint);
+    word-break: break-all;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 10px 12px;
+  }
+  .copy {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font: inherit;
+    font-size: 0.82rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--line-strong);
+    border-radius: 10px;
+    padding: 9px 13px;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  }
+  .copy svg { width: 14px; height: 14px; }
+  .copy:hover { border-color: rgba(163, 230, 53, 0.55); color: var(--accent-strong); }
+  .copy.is-copied { color: var(--accent); border-color: rgba(163, 230, 53, 0.55); }
+
+  /* ---------- Notas / changelog ---------- */
+  .notes {
+    margin-top: 52px;
+    border-left: 2px solid rgba(163, 230, 53, 0.45);
+    padding: 4px 0 4px 20px;
+  }
+  .notes-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .notes-text {
+    margin-top: 10px;
+    color: var(--muted);
+    font-size: 0.98rem;
+    max-width: 68ch;
+    white-space: pre-line;
+  }
+  .changelog {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-top: 52px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .changelog svg { width: 15px; height: 15px; transition: transform 0.2s ease; }
+  .changelog:hover { color: var(--accent-strong); border-color: rgba(163, 230, 53, 0.5); }
+  .changelog:hover svg { transform: translate(2px, -2px); }
+
+  /* ---------- Como atualizar ---------- */
+  .update {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-top: 56px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  }
+  .update-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(163, 230, 53, 0.12);
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .update-icon svg { width: 21px; height: 21px; }
+  .update h2 {
+    font-size: 1.1rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+  }
+  .update p {
+    margin-top: 6px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    max-width: 62ch;
+  }
+  .path {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+  }
+  .step {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 5px 11px;
+  }
+  .path svg { width: 13px; height: 13px; color: var(--faint); }
+
+  /* ---------- Rodapé ---------- */
+  .footer {
+    margin-top: 72px;
+    border-top: 1px solid var(--line);
+    padding: 26px 0 40px;
+  }
+  .footer-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  @media (min-width: 720px) {
+    .footer-inner { flex-direction: row; align-items: center; justify-content: space-between; }
+  }
+  .foot-left { display: flex; flex-direction: column; gap: 6px; }
+  .brand-mini {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 650;
+    font-size: 0.95rem;
+  }
+  .brand-mini svg { width: 18px; height: 18px; color: var(--accent); }
+  .foot-note {
+    color: var(--faint);
+    font-size: 0.82rem;
+    max-width: 52ch;
+  }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 18px; }
+  .foot-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--muted);
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .foot-links a svg { width: 15px; height: 15px; }
+  .foot-links a:hover { color: var(--accent-strong); }
+
+  /* ---------- Entrada em cascata ---------- */
+  .reveal {
+    opacity: 0;
+    animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    .reveal { opacity: 1; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+<div class="backdrop" aria-hidden="true"></div>
+<div class="grain" aria-hidden="true"></div>
+<div class="topline" aria-hidden="true"></div>
+
+<header class="wrap topbar">
+  <span class="brand">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 L22 22 H16.6 L12 11.5 L7.4 22 H2 Z"/></svg>
+    Apex
+  </span>
+  <span class="chip">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+    Distribuição oficial
+  </span>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow reveal" style="--d:.02s">Download oficial</p>
+    <h1 class="title reveal" style="--d:.08s">Apex</h1>
+    <p class="verline reveal" style="--d:.14s">
+      <span class="skel skel-ver" id="skel-ver" aria-hidden="true"></span>
+      <span class="ver" id="ver" hidden></span>
+    </p>
+    <p class="meta reveal" style="--d:.2s">
+      <span class="pulse" aria-hidden="true"></span>
+      <span id="meta-text">Última versão</span>
+    </p>
+  </section>
+
+  <section aria-label="Downloads">
+    <div class="notice" id="notice" hidden aria-live="polite">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+      <p>Não foi possível carregar os detalhes da versão — você pode estar offline ou abriu o arquivo diretamente. Os botões abaixo levam à <a href="https://github.com/notvictornw/apex-releases/releases/latest">página oficial de releases</a>.</p>
+    </div>
+
+    <div class="grid">
+      <article class="card card-featured reveal" style="--d:.26s">
+        <span class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          Recomendado
+        </span>
+        <div class="card-head">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          </span>
+          <h2>Instalador</h2>
+        </div>
+        <p class="card-desc">Instalação completa no Windows, com atalhos e atualizações pelo próprio app.</p>
+        <p class="card-size">
+          <span class="skel skel-size" id="skel-size-installer" aria-hidden="true"></span>
+          <span id="size-installer" hidden></span>
+        </p>
+        <a class="btn btn-primary" id="dl-installer" href="https://github.com/notvictornw/apex-releases/releases/latest" aria-label="Baixar instalador do Apex">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          Baixar Instalador
+        </a>
+        <details class="sha" id="sha-installer" hidden>
+          <summary>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            SHA-256
+          </summary>
+          <div class="sha-body">
+            <code id="sha-installer-code"></code>
+            <button type="button" class="copy" id="copy-installer" aria-label="Copiar SHA-256 do instalador">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span class="copy-label">Copiar</span>
+            </button>
+          </div>
+        </details>
+      </article>
+
+      <article class="card reveal" style="--d:.34s">
+        <div class="card-head">
+          <span class="card-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05"/><path d="M12 22.08V12"/></svg>
+          </span>
+          <h2>Versão Portable</h2>
+        </div>
+        <p class="card-desc">Sem instalação: extraia e execute em qualquer pasta, até mesmo de um pendrive.</p>
+        <p class="card-size">
+          <span class="skel skel-size" id="skel-size-portable" aria-hidden="true"></span>
+          <span id="size-portable" hidden></span>
+        </p>
+        <a class="btn btn-secondary" id="dl-portable" href="https://github.com/notvictornw/apex-releases/releases/latest" aria-label="Baixar versão portable do Apex">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
+          Baixar Versão Portable
+        </a>
+        <details class="sha" id="sha-portable" hidden>
+          <summary>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            SHA-256
+          </summary>
+          <div class="sha-body">
+            <code id="sha-portable-code"></code>
+            <button type="button" class="copy" id="copy-portable" aria-label="Copiar SHA-256 da versão portable">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span class="copy-label">Copiar</span>
+            </button>
+          </div>
+        </details>
+      </article>
+    </div>
+  </section>
+
+  <section class="notes reveal" id="notes" style="--d:.4s" hidden>
+    <p class="notes-label">Notas da versão</p>
+    <p class="notes-text" id="notes-text"></p>
+  </section>
+
+  <p class="reveal" style="--d:.44s">
+    <a class="changelog" id="changelog" href="https://github.com/notvictornw/apex-releases/releases/latest" target="_blank" rel="noopener">
+      Changelog completo
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+    </a>
+  </p>
+
+  <section class="update reveal" style="--d:.5s" aria-labelledby="update-title">
+    <span class="update-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+    </span>
+    <div>
+      <h2 id="update-title">Como atualizar</h2>
+      <p>O Apex verifica atualizações automaticamente em segundo plano. Quando uma versão nova estiver disponível, o próprio app avisa e atualiza — você não precisa voltar neste site.</p>
+      <p class="path" aria-label="Caminho dentro do aplicativo">
+        <span class="step">Configurações</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        <span class="step">Geral</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+        <span class="step">Atualizações</span>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div class="foot-left">
+      <span class="brand-mini">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2 L22 22 H16.6 L12 11.5 L7.4 22 H2 Z"/></svg>
+        Apex
+      </span>
+      <span class="foot-note">O código-fonte do Apex é privado. Este repositório público distribui apenas os binários oficiais.</span>
+    </div>
+    <nav class="foot-links" aria-label="Links do projeto">
+      <a href="https://github.com/notvictornw/apex-releases" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        Repositório
+      </a>
+      <a href="https://github.com/notvictornw/apex-releases/releases" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.83z"/><path d="M7 7h.01"/></svg>
+        Releases
+      </a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var RELEASES_URL = 'https://github.com/notvictornw/apex-releases/releases/latest';
+  var el = function (id) { return document.getElementById(id); };
+
+  function formatBytes(bytes) {
+    var n = Number(bytes);
+    if (!isFinite(n) || n <= 0) return null;
+    var mb = n / 1048576;
+    return mb.toLocaleString('pt-BR', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' MB';
+  }
+
+  function formatDate(value) {
+    if (!value) return null;
+    var d = new Date(value);
+    if (isNaN(d.getTime())) return null;
+    return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+  }
+
+  function fillCard(kind, item, version) {
+    var btn = el('dl-' + kind);
+    var sizeSkel = el('skel-size-' + kind);
+    var size = el('size-' + kind);
+    var shaBox = el('sha-' + kind);
+    var shaCode = el('sha-' + kind + '-code');
+    var copyBtn = el('copy-' + kind);
+
+    var sizeText = item ? formatBytes(item.size) : null;
+    if (sizeText) {
+      sizeSkel.hidden = true;
+      size.hidden = false;
+      size.textContent = sizeText;
+    }
+
+    var sha = item && item.sha256 ? String(item.sha256) : '';
+    if (sha) {
+      shaCode.textContent = sha;
+      copyBtn.setAttribute('data-sha', sha);
+      shaBox.hidden = false;
+    }
+
+    var url = item && item.url ? String(item.url) : '';
+    btn.setAttribute('href', url || RELEASES_URL);
+    btn.setAttribute(
+      'aria-label',
+      'Baixar ' + (kind === 'installer' ? 'instalador' : 'versão portable') + ' do Apex' +
+      (version ? ', versão ' + version : '') +
+      (sizeText ? ', ' + sizeText : '')
+    );
+  }
+
+  function render(manifest) {
+    var latest = manifest && manifest.latest;
+    if (!latest) return false;
+
+    var hasAny = (latest.installer && latest.installer.url) || (latest.portable && latest.portable.url);
+    if (!hasAny) return false;
+
+    var version = latest.version != null ? String(latest.version).replace(/^v/i, '') : '';
+
+    el('skel-ver').hidden = true;
+    if (version) {
+      var ver = el('ver');
+      ver.hidden = false;
+      ver.textContent = 'v' + version;
+    }
+
+    var dateText = formatDate(latest.released_at);
+    el('meta-text').textContent = dateText
+      ? 'Última versão · Publicada em ' + dateText
+      : 'Última versão';
+
+    fillCard('installer', latest.installer, version);
+    fillCard('portable', latest.portable, version);
+
+    var notes = latest.notes ? String(latest.notes).trim() : '';
+    if (notes) {
+      el('notes').hidden = false;
+      el('notes-text').textContent = notes;
+    }
+
+    var notesUrl = latest.notes_url ? String(latest.notes_url) : '';
+    if (notesUrl) {
+      el('changelog').setAttribute('href', notesUrl);
+    } else {
+      el('changelog').hidden = true;
+    }
+
+    return true;
+  }
+
+  function renderFallback() {
+    el('skel-ver').hidden = true;
+    el('ver').hidden = true;
+    el('meta-text').textContent = 'Não foi possível identificar a versão mais recente.';
+    el('skel-size-installer').hidden = true;
+    el('skel-size-portable').hidden = true;
+    el('dl-installer').setAttribute('href', RELEASES_URL);
+    el('dl-portable').setAttribute('href', RELEASES_URL);
+    el('changelog').hidden = true;
+    el('notice').hidden = false;
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.copy'), function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-sha') || '';
+      if (!text) return;
+
+      var done = function () {
+        var label = btn.querySelector('.copy-label');
+        var prev = label.textContent;
+        label.textContent = 'Copiado';
+        btn.classList.add('is-copied');
+        if (btn._t) clearTimeout(btn._t);
+        btn._t = setTimeout(function () {
+          label.textContent = prev;
+          btn.classList.remove('is-copied');
+        }, 1800);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { legacyCopy(text) && done(); });
+      } else {
+        if (legacyCopy(text)) done();
+      }
+    });
+  });
+
+  function legacyCopy(text) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:-9999px;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  (function init() {
+    try {
+      fetch('./manifest.json', { cache: 'no-cache' })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        })
+        .then(function (manifest) {
+          if (!render(manifest)) renderFallback();
+        })
+        .catch(function () { renderFallback(); });
+    } catch (e) {
+      renderFallback();
+    }
+  })();
+})();
+</script>
+</body>
+</html>
