@@ -2,21 +2,21 @@
   "schema": 1,
   "channel": "stable",
   "latest": {
-    "version": "0.17.11",
-    "tag": "v0.17.11",
-    "released_at": "2026-11-17T11:02:36Z",
+    "version": "0.34.1",
+    "tag": "v0.34.1",
+    "released_at": "2026-11-17T11:20:00Z",
     "min_supported": "0.15.0",
     "installer": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.17.11/Apex-Setup-0.17.11.exe",
-      "sha256": "31aab2986635e1c625dd1190005f94d553984dd31d6d54b5b7476c01076b0fc6",
-      "size": 13746139
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.34.1/Apex-Setup-0.34.1.exe",
+      "sha256": "5f6ad7558a3f3a713ce82906807dbb74d698c6810e8e4e9e35b8b5ef49a884ee",
+      "size": 13993096
     },
     "portable": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.17.11/Apex.zip",
-      "sha256": "ed285fbe27101125b407df77c52bde76e602c8f4d90e70649e0c4f28da8a4315",
-      "size": 83393223
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.34.1/Apex.zip",
+      "sha256": "f849a2d05fbf269596586a1260460ee2369fd7801a01c47408e75b8fdbf01f76",
+      "size": 88967859
     },
     "notes_url": "https://notvictornw.github.io/apex-releases/CHANGELOG.md",
-    "notes": "notas do manifest passam a usar o primeiro item do changelog"
+    "notes": "sistema de feedback visual (spinner, dots, banners, BatchBar) e navegacao unificada (NavigateTo + PageRegistry)"
   }
 }
