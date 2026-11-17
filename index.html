@@ -449,6 +449,168 @@
   .changelog:hover { color: var(--accent-strong); border-color: rgba(163, 230, 53, 0.5); }
   .changelog:hover svg { transform: translate(2px, -2px); }
 
+  /* ---------- Novidades (changelog) ---------- */
+  .news { margin-top: 56px; }
+  .news-top {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-bottom: 26px;
+  }
+  .news-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .news-count {
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--faint);
+  }
+  .news-versions { display: flex; flex-direction: column; }
+
+  .news-entry {
+    position: relative;
+    padding: 0 0 30px 30px;
+    border-left: 1px solid var(--line);
+  }
+  .news-entry:last-child {
+    border-left-color: transparent;
+    padding-bottom: 2px;
+  }
+  .news-entry::before {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: -5px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg);
+    border: 2px solid rgba(163, 230, 53, 0.5);
+  }
+  .news-entry-latest::before {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 16px rgba(163, 230, 53, 0.45);
+  }
+
+  .news-head-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 12px;
+  }
+  .news-ver {
+    font-family: var(--font-mono);
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--accent);
+    text-shadow: 0 0 26px rgba(163, 230, 53, 0.3);
+  }
+  .news-date { color: var(--muted); font-size: 0.92rem; }
+  .news-badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-strong);
+    background: rgba(163, 230, 53, 0.1);
+    border: 1px solid rgba(163, 230, 53, 0.32);
+    border-radius: 999px;
+    padding: 4px 10px;
+  }
+
+  .news-body { min-width: 0; }
+  .news-details .news-body { margin-top: 12px; }
+  .news-cat {
+    margin-top: 18px;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--faint);
+  }
+  .news-body .news-cat:first-child { margin-top: 14px; }
+  .news-cat-add { color: var(--accent); }
+  .news-cat-fix { color: var(--amber); }
+
+  .news-items {
+    margin-top: 9px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .news-items li {
+    position: relative;
+    padding-left: 19px;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  .news-items li::before {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 0.58em;
+    width: 5px;
+    height: 5px;
+    border-radius: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+    transform: rotate(45deg);
+  }
+  .news-items code {
+    font-family: var(--font-mono);
+    font-size: 0.84em;
+    color: var(--text);
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 1px 6px;
+  }
+
+  .news-details summary {
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+  }
+  .news-details summary::-webkit-details-marker { display: none; }
+  .news-sum-chevron {
+    width: 14px;
+    height: 14px;
+    color: var(--faint);
+    flex-shrink: 0;
+    transition: transform 0.2s ease, color 0.2s ease;
+  }
+  .news-details[open] .news-sum-chevron {
+    transform: rotate(180deg);
+    color: var(--accent);
+  }
+  .news-sum-ver {
+    font-family: var(--font-mono);
+    font-size: 0.98rem;
+    font-weight: 650;
+    color: var(--text);
+    transition: color 0.2s ease;
+  }
+  .news-details summary:hover .news-sum-ver { color: var(--accent-strong); }
+  .news-sum-date { color: var(--faint); font-size: 0.88rem; }
+
   /* ---------- Como atualizar ---------- */
   .update {
     display: flex;
@@ -697,6 +859,14 @@
       </p>
     </div>
   </section>
+
+  <section class="news reveal" id="news" hidden aria-labelledby="news-title">
+    <div class="news-top">
+      <p class="news-label" id="news-title">Novidades</p>
+      <p class="news-count" id="news-count"></p>
+    </div>
+    <div class="news-versions" id="news-versions"></div>
+  </section>
 </main>
 
 <footer class="footer">
@@ -803,7 +973,7 @@
     fillCard('portable', latest.portable, version);
 
     var notes = latest.notes ? String(latest.notes).trim() : '';
-    if (notes) {
+    if (notes && !changelogReady) {
       el('notes').hidden = false;
       el('notes-text').textContent = notes;
     }
@@ -871,6 +1041,222 @@
     }
   }
 
+  /* ---------- Novidades (changelog) ---------- */
+
+  var NEWS_MAX_VERSIONS = 8;
+  var changelogReady = false;
+
+  function stripMarkdownLinks(text) {
+    return String(text)
+      .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+      .replace(/\[([^\]]+)\]\[[^\]]*\]/g, '$1')
+      .replace(/\*\*([^*]+)\*\*/g, '$1')
+      .trim();
+  }
+
+  function appendInline(parent, text) {
+    var parts = String(text).split('`');
+    var balanced = parts.length % 2 === 1;
+    for (var i = 0; i < parts.length; i++) {
+      if (!parts[i]) continue;
+      if (i % 2 === 1 && (balanced || i < parts.length - 1)) {
+        var code = document.createElement('code');
+        code.textContent = parts[i];
+        parent.appendChild(code);
+      } else {
+        parent.appendChild(document.createTextNode(parts[i]));
+      }
+    }
+  }
+
+  function parseChangelog(markdown) {
+    var lines = String(markdown).split(/\r?\n/);
+    var versions = [];
+    var current = null;
+    var section = null;
+
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+
+      if (/^\s*\[[^\]]+\]:\s*\S/.test(line)) continue;
+
+      var h2 = /^##\s+\[([^\]]+)\](?:\s*-\s*(.+?))?\s*$/.exec(line);
+      if (h2) {
+        var tag = h2[1].trim();
+        if (/^n[aã]o\s+lan[cç]ado$/i.test(tag)) {
+          current = null;
+          section = null;
+          continue;
+        }
+        current = { version: tag.replace(/^v/i, ''), date: (h2[2] || '').trim(), sections: [] };
+        section = null;
+        versions.push(current);
+        continue;
+      }
+
+      if (!current) continue;
+
+      var h3 = /^###\s+(.+?)\s*$/.exec(line);
+      if (h3) {
+        section = { title: h3[1].trim(), items: [] };
+        current.sections.push(section);
+        continue;
+      }
+
+      if (section) {
+        var bullet = /^\s*[-*]\s+(.+?)\s*$/.exec(line);
+        if (bullet) section.items.push(bullet[1]);
+      }
+    }
+
+    return versions.filter(function (v) {
+      return v.sections.some(function (s) { return s.items.length > 0; });
+    });
+  }
+
+  function categoryClass(title) {
+    var t = String(title).toLowerCase();
+    if (t.lastIndexOf('adic', 0) === 0 || t.lastIndexOf('add', 0) === 0) return ' news-cat-add';
+    if (t.lastIndexOf('corr', 0) === 0 || t.lastIndexOf('fix', 0) === 0) return ' news-cat-fix';
+    return '';
+  }
+
+  function appendSections(container, entry) {
+    for (var i = 0; i < entry.sections.length; i++) {
+      var sec = entry.sections[i];
+      if (!sec.items.length) continue;
+
+      var h = document.createElement('h3');
+      h.className = 'news-cat' + categoryClass(sec.title);
+      h.textContent = sec.title;
+      container.appendChild(h);
+
+      var ul = document.createElement('ul');
+      ul.className = 'news-items';
+      for (var j = 0; j < sec.items.length; j++) {
+        var li = document.createElement('li');
+        appendInline(li, stripMarkdownLinks(sec.items[j]));
+        ul.appendChild(li);
+      }
+      container.appendChild(ul);
+    }
+  }
+
+  function formatShortDate(value) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})/.exec(String(value || ''));
+    if (!m) return null;
+    var d = new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+    if (isNaN(d.getTime())) return null;
+    return d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
+  function makeChevron() {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '2');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('class', 'news-sum-chevron');
+    var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M6 9l6 6 6-6');
+    svg.appendChild(path);
+    return svg;
+  }
+
+  function buildHead(entry, latest) {
+    var head = document.createElement('div');
+    head.className = 'news-head-row';
+
+    var ver = document.createElement('span');
+    ver.className = latest ? 'news-ver' : 'news-sum-ver';
+    ver.textContent = 'v' + entry.version;
+    head.appendChild(ver);
+
+    var dateText = latest ? formatDate(entry.date) : formatShortDate(entry.date);
+    if (dateText) {
+      var date = document.createElement('span');
+      date.className = latest ? 'news-date' : 'news-sum-date';
+      date.textContent = latest ? dateText : '— ' + dateText;
+      head.appendChild(date);
+    }
+
+    if (latest) {
+      var badge = document.createElement('span');
+      badge.className = 'news-badge';
+      badge.textContent = 'Mais recente';
+      head.appendChild(badge);
+    }
+
+    return head;
+  }
+
+  function renderChangelog(versions) {
+    var host = el('news-versions');
+    if (!host || !versions.length) return false;
+
+    var total = versions.length;
+    var shown = versions.slice(0, NEWS_MAX_VERSIONS);
+
+    for (var i = 0; i < shown.length; i++) {
+      var entry = shown[i];
+      var latest = i === 0;
+      var node = document.createElement(latest ? 'article' : 'details');
+      node.className = latest ? 'news-entry news-entry-latest' : 'news-entry news-details';
+
+      if (latest) {
+        node.appendChild(buildHead(entry, true));
+      } else {
+        var sum = document.createElement('summary');
+        sum.appendChild(makeChevron());
+        sum.appendChild(buildHead(entry, false));
+        node.appendChild(sum);
+      }
+
+      var body = document.createElement('div');
+      body.className = 'news-body';
+      appendSections(body, entry);
+      node.appendChild(body);
+
+      host.appendChild(node);
+    }
+
+    var count = el('news-count');
+    if (count) {
+      var label = shown.length === 1 ? 'versão' : 'versões';
+      count.textContent = shown.length === total
+        ? shown.length + ' ' + label
+        : shown.length + ' de ' + total + ' ' + label;
+    }
+
+    return true;
+  }
+
+  function showChangelog() {
+    changelogReady = true;
+    var notes = el('notes');
+    if (notes) notes.hidden = true;
+    var news = el('news');
+    if (news) news.hidden = false;
+  }
+
+  function loadChangelog() {
+    fetch('./CHANGELOG.md', { cache: 'no-cache' })
+      .then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        return res.text();
+      })
+      .then(function (markdown) {
+        var versions = parseChangelog(markdown);
+        if (versions.length && renderChangelog(versions)) showChangelog();
+      })
+      .catch(function () {
+        /* Falha silenciosa: seção Novidades permanece oculta; notas da versão seguem como estão. */
+      });
+  }
+
   (function init() {
     try {
       fetch('./manifest.json', { cache: 'no-cache' })
@@ -884,6 +1270,12 @@
         .catch(function () { renderFallback(); });
     } catch (e) {
       renderFallback();
+    }
+
+    try {
+      loadChangelog();
+    } catch (e) {
+      /* Seção Novidades permanece oculta em caso de falha. */
     }
   })();
 })();
