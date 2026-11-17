@@ -7,6 +7,11 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 
 ## [Nao lancado]
 
+## [0.17.11] - 2026-11-17
+
+### Corrigido
+- notas do manifest passam a usar o primeiro item do changelog
+
 ## [0.17.10] - 2026-11-17
 
 ### Adicionado
@@ -116,3 +121,4 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 [0.17.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.17.0
 [0.16.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.16.0
 [0.12.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.12.0
+
