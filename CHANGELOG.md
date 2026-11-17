@@ -7,6 +7,15 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 
 ## [Nao lancado]
 
+## [0.17.10] - 2026-11-17
+
+### Adicionado
+- gera entrada do changelog automaticamente e reescreve links de compare no espelho
+- opt-in de telemetria no instalador + leitura do registro
+
+### Corrigido
+- acentua palavras portuguesas em strings e comentarios
+
 ## [0.17.9] - 2026-10-27
 
 ### Adicionado
