@@ -7,6 +7,31 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 
 ## [Nao lancado]
 
+## [0.17.9] - 2026-10-27
+
+### Adicionado
+- Sistema de traducao (i18n) com pt-BR e en-US: infraestrutura Loc, LocManager,
+  PluralRules e LocaleMeta, 18 arquivos de locale e migracao de 217 strings
+  do MainWindow para recursos dinamicos.
+- Dialogo de privacidade (TelemetryConsentDialog) redesenhado com tema
+  dinamico e internacionalizacao.
+- Opt-in de telemetria no instalador: tela de consentimento no Inno Setup
+  (pt-BR/en), gravacao em HKCU\Software\APEX\TelemetryEnabled e ConsentShown
+  e leitura pelo aplicativo como fallback quando o JSON nao tem consentimento.
+
+### Corrigido
+- Corrupcao de encoding (mojibake UTF-8/CP1252) acumulada em multiplas camadas,
+  que afetava acentos, cedilha e simbolos em todo o codigo-fonte
+  (56 arquivos corrigidos).
+- Mais de 100 palavras PT-BR sem acento em strings literais e comentarios
+  (22 arquivos corrigidos).
+
+## [0.17.8] - 2026-10-27
+
+### Adicionado
+- Consentimento opt-in de telemetria Sentry (LGPD/GDPR) com toggle em
+  Configuracoes.
+
 ## [0.17.7] - 2026-10-27
 
 ### Adicionado
@@ -76,7 +101,9 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 ### Adicionado
 - Sistema de tags: cada tag vX.Y.Z gera uma release fixa no GitHub.
 
-[0.17.7]: https://github.com/notvictornw/apex/compare/v0.17.0...v0.17.7
-[0.17.0]: https://github.com/notvictornw/apex/compare/v0.16.0...v0.17.0
-[0.16.0]: https://github.com/notvictornw/apex/compare/v0.12.0...v0.16.0
-[0.12.0]: https://github.com/notvictornw/apex/releases/tag/v0.12.0
+[0.17.9]: https://github.com/notvictornw/apex-releases/releases/tag/v0.17.9
+[0.17.8]: https://github.com/notvictornw/apex-releases/releases/tag/v0.17.8
+[0.17.7]: https://github.com/notvictornw/apex-releases/releases/tag/v0.17.7
+[0.17.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.17.0
+[0.16.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.16.0
+[0.12.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.12.0
