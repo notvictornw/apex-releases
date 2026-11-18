@@ -7,6 +7,19 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 
 ## [Nao lancado]
 
+## [0.36.1] - 2026-11-18
+
+### Adicionado
+- menu lateral unico com grupos recolhiveis (categorias e subcategorias) - remove as barras de abas dos hubs
+
+## [0.36.0] - 2026-11-06
+
+### Alterado
+- Navegacao de volta ao menu lateral unico: grupos recolhiveis com categorias
+  e subcategorias visiveis (Otimizacao, Jogos, Desempenho, Hardware,
+  Sistema), como no menu original. Removidas as barras de abas superiores
+  das paginas - tudo se alcanca pelo menu lateral.
+- Reduzidos elementos de navegacao redundantes dentro das paginas.
 ## [0.35.1] - 2026-11-18
 
 ### Adicionado
@@ -463,6 +476,7 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 [0.17.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.17.0
 [0.16.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.16.0
 [0.12.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.12.0
+
 
 
 

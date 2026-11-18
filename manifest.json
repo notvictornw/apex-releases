@@ -2,21 +2,21 @@
   "schema": 1,
   "channel": "stable",
   "latest": {
-    "version": "0.35.1",
-    "tag": "v0.35.1",
-    "released_at": "2026-11-18T01:00:36Z",
+    "version": "0.36.1",
+    "tag": "v0.36.1",
+    "released_at": "2026-11-18T01:50:42Z",
     "min_supported": "0.15.0",
     "installer": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.35.1/Apex-Setup-0.35.1.exe",
-      "sha256": "91436a80bcf31242767d34edd191343964c53cb3e1095eb32365ef49eb6ca27c",
-      "size": 13996445
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.36.1/Apex-Setup-0.36.1.exe",
+      "sha256": "a13ef56d423cc25359fca296294603fd070800a1853d78c2329dbd8b7e965545",
+      "size": 14000337
     },
     "portable": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.35.1/Apex.zip",
-      "sha256": "4ea0c9b137608baba14462323a7f878aecac33f7f972afa705ecb2af8295bd86",
-      "size": 88963890
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.36.1/Apex.zip",
+      "sha256": "cb0ba0c67315a29e8c32124cc77a1ffa8ac96922243f4ff1c8814e495bf37b1b",
+      "size": 88967872
     },
     "notes_url": "https://notvictornw.github.io/apex-releases/CHANGELOG.md",
-    "notes": "Energia vira sub-aba do Otimizar e Configuracoes enxuta (Overlay/Bench/Portas COM realocadas) - menu final com 10 itens"
+    "notes": "menu lateral unico com grupos recolhiveis (categorias e subcategorias) - remove as barras de abas dos hubs"
   }
 }
