@@ -7,6 +7,21 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 
 ## [Nao lancado]
 
+## [0.39.1] - 2026-11-18
+
+### Corrigido
+- escala do overlay recalibrada (saltos suaves) e IA sem atrito (modelos auto-detectados, teste automatico, erros sempre legiveis)
+
+## [0.39.0] - 2026-11-06
+
+### Alterado
+- Escala do overlay recalibrada: passos suaves (1.0 / 1.15 / 1.3) com base
+  um pouco maior - fim do "pequeno demais ou gigante demais".
+- Assistente de IA sem atrito: ao colar o endereco, o app busca sozinho a
+  lista de modelos da API e sugere um; ao completar os campos, testa a
+  conexao automaticamente. Nao e mais preciso saber o nome de um modelo.
+- Erros da IA agora sempre explicam o motivo (incluem a resposta da API) e
+  o que voce diga e usado na hora (sem atraso de salvamento).
 ## [0.38.1] - 2026-11-18
 
 ### Corrigido
@@ -513,6 +528,7 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 [0.17.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.17.0
 [0.16.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.16.0
 [0.12.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.12.0
+
 
 
 

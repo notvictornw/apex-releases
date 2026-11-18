@@ -2,21 +2,21 @@
   "schema": 1,
   "channel": "stable",
   "latest": {
-    "version": "0.38.1",
-    "tag": "v0.38.1",
-    "released_at": "2026-11-18T05:11:07Z",
+    "version": "0.39.1",
+    "tag": "v0.39.1",
+    "released_at": "2026-11-18T05:35:44Z",
     "min_supported": "0.15.0",
     "installer": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.38.1/Apex-Setup-0.38.1.exe",
-      "sha256": "120b012fc917de06453b30112d7b8e8273e35e6d90d34a7d5aac4b5fa7de5114",
-      "size": 13997226
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.39.1/Apex-Setup-0.39.1.exe",
+      "sha256": "a793532d99386d1c900cfb2a5402057acd3c0bac0c47b783575632c37a29aae1",
+      "size": 13995003
     },
     "portable": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.38.1/Apex.zip",
-      "sha256": "33853446107e314f7868b6aa45708145bd9a0d00adc3440a70c257360fe64c3d",
-      "size": 88964907
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.39.1/Apex.zip",
+      "sha256": "44fd58346b508eac121050d8226e2499d6984711a9fd153d758b761dd544e952",
+      "size": 88961615
     },
     "notes_url": "https://notvictornw.github.io/apex-releases/CHANGELOG.md",
-    "notes": "OSD autentico RTSS (texto grande com contorno, sem caixa de menu) e escala via LayoutTransform (fim do conteudo cortado/deslocado)"
+    "notes": "escala do overlay recalibrada (saltos suaves) e IA sem atrito (modelos auto-detectados, teste automatico, erros sempre legiveis)"
   }
 }
