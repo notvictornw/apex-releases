@@ -2,21 +2,21 @@
   "schema": 1,
   "channel": "stable",
   "latest": {
-    "version": "0.36.1",
-    "tag": "v0.36.1",
-    "released_at": "2026-11-18T01:50:42Z",
+    "version": "0.37.1",
+    "tag": "v0.37.1",
+    "released_at": "2026-11-18T04:58:09Z",
     "min_supported": "0.15.0",
     "installer": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.36.1/Apex-Setup-0.36.1.exe",
-      "sha256": "a13ef56d423cc25359fca296294603fd070800a1853d78c2329dbd8b7e965545",
-      "size": 14000337
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.37.1/Apex-Setup-0.37.1.exe",
+      "sha256": "6fc84970aed728f3289189782a8f1a639736efdfa09ad73b9e9551a8955c20b1",
+      "size": 13994936
     },
     "portable": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.36.1/Apex.zip",
-      "sha256": "cb0ba0c67315a29e8c32124cc77a1ffa8ac96922243f4ff1c8814e495bf37b1b",
-      "size": 88967872
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.37.1/Apex.zip",
+      "sha256": "0eae31726a30819b221d8cd5750029f9e8422aa35ad9278dcc12a7411cc777b7",
+      "size": 88965256
     },
     "notes_url": "https://notvictornw.github.io/apex-releases/CHANGELOG.md",
-    "notes": "menu lateral unico com grupos recolhiveis (categorias e subcategorias) - remove as barras de abas dos hubs"
+    "notes": "overlay estilo Afterburner (auto-show em jogo, diagnostico visivel, visual novo) e 15 correcoes de layout/scroll em todas as paginas"
   }
 }

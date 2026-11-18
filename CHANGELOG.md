@@ -7,6 +7,29 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 
 ## [Nao lancado]
 
+## [0.37.1] - 2026-11-18
+
+### Adicionado
+- overlay estilo Afterburner (auto-show em jogo, diagnostico visivel, visual novo) e 15 correcoes de layout/scroll em todas as paginas
+
+## [0.37.0] - 2026-11-06
+
+### Alterado
+- Overlay de FPS redesenhado no estilo Afterburner/RivaTuner: aparece
+  somente enquanto um jogo esta em primeiro plano e some ao voltar ao
+  desktop; painel mais legivel com barra de destaque, grafico de frametime
+  com preenchimento e cores de risco para temperatura/carga.
+- O monitor de FPS agora informa seu estado: se a coleta falhar, a pagina
+  Overlay mostra o motivo em vez de ficar em silencio.
+
+### Corrigido
+- Layout e rolagem em todas as paginas: botoes que ficavam cortados e
+  inalcancaveis (Energia, Benchmark, seletor do Overlay), pagina de
+  Benchmark sem rolagem, lista de jogos esmagando o painel de detalhes,
+  cartoes de jogos e de ajustes espremidos em janelas menores, titulo
+  "VRAM POR JOGO" invisivel na pagina de video, historico de perfis sem
+  limite, janela maior que a tela em notebooks 1366x768 e retorno a uma
+  pagina agora sempre no topo.
 ## [0.36.1] - 2026-11-18
 
 ### Adicionado
@@ -476,6 +499,7 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 [0.17.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.17.0
 [0.16.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.16.0
 [0.12.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.12.0
+
 
 
 
