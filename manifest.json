@@ -2,21 +2,21 @@
   "schema": 1,
   "channel": "stable",
   "latest": {
-    "version": "0.37.1",
-    "tag": "v0.37.1",
-    "released_at": "2026-11-18T04:58:09Z",
+    "version": "0.38.1",
+    "tag": "v0.38.1",
+    "released_at": "2026-11-18T05:11:07Z",
     "min_supported": "0.15.0",
     "installer": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.37.1/Apex-Setup-0.37.1.exe",
-      "sha256": "6fc84970aed728f3289189782a8f1a639736efdfa09ad73b9e9551a8955c20b1",
-      "size": 13994936
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.38.1/Apex-Setup-0.38.1.exe",
+      "sha256": "120b012fc917de06453b30112d7b8e8273e35e6d90d34a7d5aac4b5fa7de5114",
+      "size": 13997226
     },
     "portable": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.37.1/Apex.zip",
-      "sha256": "0eae31726a30819b221d8cd5750029f9e8422aa35ad9278dcc12a7411cc777b7",
-      "size": 88965256
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.38.1/Apex.zip",
+      "sha256": "33853446107e314f7868b6aa45708145bd9a0d00adc3440a70c257360fe64c3d",
+      "size": 88964907
     },
     "notes_url": "https://notvictornw.github.io/apex-releases/CHANGELOG.md",
-    "notes": "overlay estilo Afterburner (auto-show em jogo, diagnostico visivel, visual novo) e 15 correcoes de layout/scroll em todas as paginas"
+    "notes": "OSD autentico RTSS (texto grande com contorno, sem caixa de menu) e escala via LayoutTransform (fim do conteudo cortado/deslocado)"
   }
 }

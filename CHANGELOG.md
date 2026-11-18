@@ -7,6 +7,20 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 
 ## [Nao lancado]
 
+## [0.38.1] - 2026-11-18
+
+### Corrigido
+- OSD autentico RTSS (texto grande com contorno, sem caixa de menu) e escala via LayoutTransform (fim do conteudo cortado/deslocado)
+
+## [0.38.0] - 2026-11-06
+
+### Alterado
+- Overlay de FPS com visual autentico estilo RivaTuner: texto grande com
+  contorno preto legivel sobre qualquer fundo, sem a caixa escura de menu.
+  FPS em destaque (40 px) e sensores maiores.
+- Novas escalas do overlay (1.0 / 1.25 / 1.6) que agora redimensionam de
+  verdade - antes o conteudo crescia fora da janela e ficava cortado ou
+  fora do lugar.
 ## [0.37.1] - 2026-11-18
 
 ### Adicionado
@@ -499,6 +513,7 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 [0.17.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.17.0
 [0.16.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.16.0
 [0.12.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.12.0
+
 
 
 
