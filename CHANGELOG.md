@@ -7,6 +7,26 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 
 ## [Nao lancado]
 
+## [0.35.1] - 2026-11-18
+
+### Adicionado
+- Energia vira sub-aba do Otimizar e Configuracoes enxuta (Overlay/Bench/Portas COM realocadas) - menu final com 10 itens
+- menu em hubs (23 -> 10 itens) com sub-abas nas paginas e NavigateTo sem depender do RadioButton
+
+## [0.35.0] - 2026-11-06
+
+### Adicionado
+- Menu redesenhado: de 23 itens para 10 entradas claras, cada uma com
+  sub-abas na propria pagina (Desempenho, Jogos, Hardware, Drivers,
+  Manutencao). Nada foi removido - tudo ficou mais facil de achar.
+- Energia agora e uma sub-aba do Otimizar.
+- Configuracoes enxuta: as opcoes de Overlay foram para a pagina Overlay
+  (Jogos), as opcoes avancadas do teste para o Desempenho e as Portas COM
+  para Drivers seriais.
+- Feedback visual consistente: indicador girando em operacoes, pontos de
+  estado coloridos, banners de sucesso/aviso/erro e barra de progresso em
+  lote com cancelamento.
+
 ## [0.34.1] - 2026-11-17
 
 ### Adicionado
@@ -443,5 +463,6 @@ e este projeto adere ao [Versionamento Semantico](https://semver.org/lang/pt-BR/
 [0.17.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.17.0
 [0.16.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.16.0
 [0.12.0]: https://github.com/notvictornw/apex-releases/releases/tag/v0.12.0
+
 
 

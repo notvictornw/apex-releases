@@ -2,21 +2,21 @@
   "schema": 1,
   "channel": "stable",
   "latest": {
-    "version": "0.34.1",
-    "tag": "v0.34.1",
-    "released_at": "2026-11-17T11:20:00Z",
+    "version": "0.35.1",
+    "tag": "v0.35.1",
+    "released_at": "2026-11-18T01:00:36Z",
     "min_supported": "0.15.0",
     "installer": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.34.1/Apex-Setup-0.34.1.exe",
-      "sha256": "5f6ad7558a3f3a713ce82906807dbb74d698c6810e8e4e9e35b8b5ef49a884ee",
-      "size": 13993096
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.35.1/Apex-Setup-0.35.1.exe",
+      "sha256": "91436a80bcf31242767d34edd191343964c53cb3e1095eb32365ef49eb6ca27c",
+      "size": 13996445
     },
     "portable": {
-      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.34.1/Apex.zip",
-      "sha256": "f849a2d05fbf269596586a1260460ee2369fd7801a01c47408e75b8fdbf01f76",
-      "size": 88967859
+      "url": "https://github.com/notvictornw/apex-releases/releases/download/v0.35.1/Apex.zip",
+      "sha256": "4ea0c9b137608baba14462323a7f878aecac33f7f972afa705ecb2af8295bd86",
+      "size": 88963890
     },
     "notes_url": "https://notvictornw.github.io/apex-releases/CHANGELOG.md",
-    "notes": "sistema de feedback visual (spinner, dots, banners, BatchBar) e navegacao unificada (NavigateTo + PageRegistry)"
+    "notes": "Energia vira sub-aba do Otimizar e Configuracoes enxuta (Overlay/Bench/Portas COM realocadas) - menu final com 10 itens"
   }
 }
